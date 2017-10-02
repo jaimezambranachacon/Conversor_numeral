@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Multi Conversor</string>
+    <string name="app_name">Conversor Numerico</string>
     <string name="numero_entrada">Numero a convertir</string>
 </resources>

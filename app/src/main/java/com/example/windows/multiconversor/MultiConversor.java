@@ -43,24 +43,28 @@ public class MultiConversor extends AppCompatActivity {
         adec= (RadioButton) findViewById(R.id.radio_adec);
         aoct= (RadioButton) findViewById(R.id.radio_aoct);
 
-        rganumero.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            public void onCheckedChanged(RadioGroup group,int checkedId) {
-                switch (checkedId){
-                    case R.id.radio_adec:
-                        result.setText(Integer.toHexString(Integer.parseInt(num.getText().toString())).toUpperCase());
-                        break;
-                    case R.id.radio_abin:
-                        result.setText(Integer.toBinaryString(Integer.parseInt(num.getText().toString())));
-                        break;
-                    case R.id.radio_aoct:
-                        result.setText(Integer.toOctalString((Integer.parseInt(num.getText().toString()))));
-                        break;
-                    default:
-                        break;
+
+            rganumero.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                public void onCheckedChanged(RadioGroup group,int checkedId) {
+                    try {
+                        switch (checkedId){
+                            case R.id.radio_adec:
+                                result.setText(Integer.toHexString(Integer.parseInt(num.getText().toString())).toUpperCase());
+                                break;
+                            case R.id.radio_abin:
+                                result.setText(Integer.toBinaryString(Integer.parseInt(num.getText().toString())));
+                                break;
+                            case R.id.radio_aoct:
+                                result.setText(Integer.toOctalString((Integer.parseInt(num.getText().toString()))));
+                                break;
+                            default:
+                                //
+                                break;
+                        }
+                    }catch (Exception e){
+                        Toast.makeText(MultiConversor.this, "INTRODUZCA UN NUMERO", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
-
-
+            });
     }
 }
