@@ -25,8 +25,8 @@ public class MultiConversor extends AppCompatActivity {
     EditText num;
     TextView result;
 
-    RadioGroup rgdenumero, rganumero;
-    RadioButton abin,adec,debin,dedec;
+    RadioGroup rganumero;
+    RadioButton abin,adec,aoct,dedec;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,13 +38,10 @@ public class MultiConversor extends AppCompatActivity {
         result= (TextView) findViewById(R.id.Txtv_conversion);
         //lugar donde se colocara el resulatado de la conversion
 
-        rgdenumero= (RadioGroup)findViewById(R.id.rg_denumero);
+        rganumero= (RadioGroup)findViewById(R.id.rg_anumero);
         abin= (RadioButton) findViewById(R.id.radio_abin);
         adec= (RadioButton) findViewById(R.id.radio_adec);
-
-        rganumero= (RadioGroup)findViewById(R.id.rg_anumero);
-        dedec= (RadioButton) findViewById(R.id.radio_dedec);
-        debin= (RadioButton) findViewById(R.id.radio_debin);
+        aoct= (RadioButton) findViewById(R.id.radio_aoct);
 
         rganumero.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group,int checkedId) {
@@ -55,49 +52,15 @@ public class MultiConversor extends AppCompatActivity {
                     case R.id.radio_abin:
                         result.setText(Integer.toBinaryString(Integer.parseInt(num.getText().toString())));
                         break;
-                    default:
-                        break;
-                }
-            }
-        });
-
-        rgdenumero.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            public void onCheckedChanged(RadioGroup group,int checkedId) {
-                switch (checkedId){
-                    case R.id.radio_dedec:
-                        result.setText("de decimal");
-                        break;
-                    case R.id.radio_debin:
-                        result.setText("de binario");
+                    case R.id.radio_aoct:
+                        result.setText(Integer.toOctalString((Integer.parseInt(num.getText().toString()))));
                         break;
                     default:
                         break;
                 }
             }
         });
-    }
 
 
-
-    public static String obtenerBinario(String x){
-        numero=Integer.parseInt(x);
-
-        ArrayList<String> binario = new ArrayList<String>();
-        int resto;
-        String binarioString = "";
-
-        do{
-            resto = numero%2;
-            numero = numero/2;
-            binario.add(0, Integer.toString(resto));
-        }while(numero >= 2); //Haremos el bucle hasta que el cociente no se pueda dividir mas
-
-        binario.add(0, Integer.toString(numero)); //Cogeremos el ultimo cociente
-
-        //Cogemos cada uno de los elementos del ArrayList y los juntamos en un String
-        for(int i = 0; i < binario.size(); i++){
-            binarioString += binario.get(i);
-        }
-        return binarioString;
     }
 }
