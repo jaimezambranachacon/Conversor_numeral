@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Multi Conversor</string>
+    <string name="numero_entrada">Numero a convertir</string>
+</resources>
